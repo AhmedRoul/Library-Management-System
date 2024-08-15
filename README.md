@@ -180,7 +180,7 @@
             <li>
                 <p>If the credentials are correct, you will receive a JWT token in the response.</p>
                 <pre><code>{
-    "token": "your-jwt-token"
+    "accessToken": "your-jwt-token"
 }</code></pre>
             </li>
             <li>
@@ -190,40 +190,29 @@
         </ol>
         <h2 id="password-management">Password Management</h2>
         <p>Password management includes features for user password changes and resets. These features are designed to be secure and user-friendly.</p>
-        <h3>Changing Password</h3>
-        <ol>
-            <li>
-                <p>Send a POST request to <code>/api/change-password</code> with your current password and the new password.</p>
-                <pre><code>POST /api/change-password
-{
-    "currentPassword": "your-current-password",
-    "newPassword": "your-new-password"
-}</code></pre>
-            </li>
-            <li>
-                <p>Upon successful validation, your password will be updated.</p>
-            </li>
-        </ol>
-        <h3>Resetting Password</h3>
-        <ol>
-            <li>
-                <p>If you forget your password, send a POST request to <code>/api/reset-password</code> with your email address.</p>
-                <pre><code>POST /api/reset-password
-{
-    "email": "your-email@example.com"
-}</code></pre>
-            </li>
-            <li>
-                <p>You will receive a password reset link via email. Follow the instructions to reset your password.</p>
-            </li>
-        </ol>
+
+        <div class="markdown prose w-full break-words dark:prose-invert dark">
+    <p> <code>CustomPasswordEncoder</code> class focusing on its algorithm and functionality:</p>
+    <hr>
+    <h3>Summary of <code>CustomPasswordEncoder</code></h3>
+    <p>The <code>CustomPasswordEncoder</code> class implements Spring Security's <code>PasswordEncoder</code> interface. It provides custom methods for encoding and verifying passwords.</p>
+    <p><strong>Algorithm</strong>:</p>
+    <ol>
+        <li><strong>Encoding</strong>: Converts a plain text password into an encoded format using a custom algorithm defined in <code>SecurityConfigurationPassword</code>.</li>
+        <li><strong>Matching</strong>: Compares a plain text password against an encoded password to check for a match, also using custom logic from <code>SecurityConfigurationPassword</code>.</li>
+    </ol>
+    <p><strong>How It Works</strong>:</p>
+    <ul>
+        <li><strong>Encoding</strong>: Calls <code>SecurityConfigurationPassword.NewPasswordEncoder()</code> to encode the password.</li>
+        <li><strong>Matching</strong>: Uses <code>SecurityConfigurationPassword.matchPasswords()</code> to verify if the plain text password matches the encoded one.</li>
+    </ul>
+    <hr>
+    </div>
+    <br>
         <h2 id="caching">Caching</h2>
         <p>The system implements caching to improve performance. Cached data is used to reduce redundant computations and database queries.</p>
         <h3>Cache Configuration</h3>
         <ol>
-            <li>
-                <p>Configuration is managed through <code>application.properties</code> or <code>application.yml</code>. You can adjust cache settings as needed.</p>
-            </li>
             <li>
                 <p>Cacheable methods are annotated with <code>@Cacheable</code>, and cache updates with <code>@CachePut</code> and <code>@CacheEvict</code>.</p>
             </li>
@@ -234,12 +223,10 @@
                 <p><strong>Purpose of Aspects</strong>: Aspects are used to separate cross-cutting concerns, such as logging and security, from the business logic. This makes the code cleaner and easier to maintain.</p>
             </li>
             <li>
-                <p><strong>Implementation</strong>: An aspect is created for the <code>com.Test.Library.Management.System.Controllers</code> package to target POST requests. This aspect can be used to log POST requests, enforce security measures, or perform
-                    other cross-cutting tasks.</p>
+             
             </li>
             <li>
-                <p><strong>How It Works</strong>: The aspect intercepts methods annotated with <code>@PostMapping</code> in the specified package. When a POST request is made, the aspect’s advice is executed before or after the controller’s method, depending
-                    on the aspect’s configuration.</p>
+               
             </li>
         </ul>
         <hr>
