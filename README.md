@@ -14,24 +14,27 @@
             <li><a rel="noopener" href="#aspects">Aspects</a></li>
         </ol>
         <hr>
-        <h2>Introduction</h2>
+        <h2 id="introduction">Introduction</h2>
         <p>This document provides comprehensive information on how to run the Library Management System, interact with its API endpoints, and understand the implemented authentication, password management, caching, and aspects.</p>
-        <h2>Running the Application</h2>
+        <h2 id="running-the-application">Running the Application</h2>
         <ol>
             <li>
-                <p><strong>Clone the Repository</strong>: Begin by cloning the repository to your local machine.</p><pre><div class="dark bg-gray-950 rounded-md border-[0.5px] border-token-border-medium"><div class="flex items-center relative text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><div class="flex items-center"><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M7 5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-2v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h2zm2 2h5a3 3 0 0 1 3 3v5h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1zM5 9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1z" clip-rule="evenodd"></path></svg></button></span></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre hljs language-bash">git <span class="hljs-built_in">clone</span>  (https://github.com/AhmedRoul/Library-Management-System/)
-</code></div></div></pre></li>
+                <p><strong>Clone the Repository</strong>: Begin by cloning the repository to your local machine.</p>
+                <pre><code>git clone https://github.com/AhmedRoul/Library-Management-System/</code></pre>
+            </li>
             <li>
-                <p><strong>Build the Project</strong>: Navigate to the project directory and build the project using Maven or Gradle.</p><pre><div class="dark bg-gray-950 rounded-md border-[0.5px] border-token-border-medium"><div class="flex items-center relative text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span></span><div class="flex items-center"><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M7 5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-2v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h2zm2 2h5a3 3 0 0 1 3 3v5h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1zM5 9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1z" clip-rule="evenodd"></path></svg></button></span></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre hljs language-bash">mvn clean install
-</code></div></div></pre></li>
+                <p><strong>Build the Project</strong>: Navigate to the project directory and build the project using Maven or Gradle.</p>
+                <pre><code>mvn clean install</code></pre>
+            </li>
             <li>
-                <p><strong>Run the Application</strong>: Use the following command to run the Spring Boot application.</p><pre><div class="dark bg-gray-950 rounded-md border-[0.5px] border-token-border-medium"><div class="flex items-center relative text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span></span><div class="flex items-center"><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M7 5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-2v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h2zm2 2h5a3 3 0 0 1 3 3v5h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1zM5 9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1z" clip-rule="evenodd"></path></svg></button></span></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre hljs language-bash">mvn spring-boot:run
-</code></div></div></pre></li>
+                <p><strong>Run the Application</strong>: Use the following command to run the Spring Boot application.</p>
+                <pre><code>mvn spring-boot:run</code></pre>
+            </li>
             <li>
                 <p><strong>Access the Application</strong>: Once the application is running, you can access it at <code>http://localhost:9100</code>.</p>
             </li>
         </ol>
-        <h2>Interacting with API Endpoints</h2>
+        <h2 id="interacting-with-api-endpoints">Interacting with API Endpoints</h2>
         <p>The Library Management System provides several API endpoints for managing books, users, and borrowing activities. Below is a summary of the main controllers and their endpoints:</p>
         <ul>
             <li>
@@ -131,109 +134,116 @@
                         <li><code>patronId</code> - ID of the patron.</li>
                     </ul>
                 </li>
-                <li><strong>Request Body:</strong> <code>BorrowingRecordPostRequest</code> object containing borrowing details.</li>
-                <li><strong>Response:</strong> Confirmation message or errors if book or patron does not exist.</li>
+                <li><strong>Response:</strong> Confirmation message or an error if the record cannot be created.</li>
             </ul>
-            <h4>2. Get Borrowing Record</h4>
+            <h4>2. Get All Borrowing Records</h4>
             <ul>
-                <li><strong>Endpoint:</strong> <code>GET /api/borrow/{bookId}/patron/{patronId}</code></li>
-                <li><strong>Description:</strong> Retrieves a borrowing record by book and patron ID.</li>
-                <li><strong>Path Variables:</strong>
-                    <ul>
-                        <li><code>bookId</code> - ID of the book.</li>
-                        <li><code>patronId</code> - ID of the patron.</li>
-                    </ul>
-                </li>
-                <li><strong>Response:</strong> Borrowing record object.</li>
+                <li><strong>Endpoint:</strong> <code>GET /api/borrow</code></li>
+                <li><strong>Description:</strong> Retrieves all borrowing records.</li>
+                <li><strong>Response:</strong> A list of borrowing records.</li>
             </ul>
-            <h4>3. Edit Borrowing Record</h4>
+            <h4>3. Get Borrowing Record by ID</h4>
             <ul>
-                <li><strong>Endpoint:</strong> <code>PUT /api/borrow/{bookId}/patron/{patronId}</code></li>
-                <li><strong>Description:</strong> Updates an existing borrowing record.</li>
-                <li><strong>Path Variables:</strong>
-                    <ul>
-                        <li><code>bookId</code> - ID of the book.</li>
-                        <li><code>patronId</code> - ID of the patron.</li>
-                    </ul>
-                </li>
-                <li><strong>Request Body:</strong> <code>BorrowingRecordPutRequest</code> object containing updated borrowing details.</li>
-                <li><strong>Response:</strong> Confirmation message or an error if the record does not exist.</li>
+                <li><strong>Endpoint:</strong> <code>GET /api/borrow/{id}</code></li>
+                <li><strong>Description:</strong> Retrieves a borrowing record by ID.</li>
+                <li><strong>Path Variable:</strong> <code>id</code> - ID of the borrowing record.</li>
+                <li><strong>Response:</strong> Borrowing record object if found; otherwise, an empty JSON object.</li>
             </ul>
-            <li>
-                <p><strong>LoginController</strong>: Handles user authentication and JWT token generation.</p>
-                <ul>
-                    <li><code>POST /login</code>: Authenticate a user and generate a JWT token.</li>
-                </ul>
-            </li>
-            <li>
-                <p><strong>PatronController</strong>: Manages library patrons.</p>
-                <ul>
-                    <li><code>GET /patrons</code>: Retrieve a list of all patrons (Requires authentication).</li>
-                    <li><code>POST /patrons</code>: Register a new patron.</li>
-                </ul>
-            </li>
-            <li>
-                <p><strong>RegisterController</strong>: Manages user registration.</p>
-                <ul>
-                    <li><code>POST /register</code>: Register a new user.</li>
-                </ul>
-            </li>
+            <h4>4. Return Borrowed Book</h4>
+            <ul>
+                <li><strong>Endpoint:</strong> <code>PUT /api/borrow/{id}/return</code></li>
+                <li><strong>Description:</strong> Marks a borrowed book as returned.</li>
+                <li><strong>Path Variable:</strong> <code>id</code> - ID of the borrowing record.</li>
+                <li><strong>Response:</strong> Confirmation message or an error if the record cannot be updated.</li>
+            </ul>
         </ul>
-        <h2>Authentication</h2>
-        <p>Authentication is required for certain operations within the application, such as adding a new book or borrowing a book. The authentication process involves the following steps:</p>
+        <h2 id="authentication">Authentication</h2>
+        <p>The system uses JWT (JSON Web Token) for user authentication. To access secured endpoints, you need to include a valid JWT token in the <code>Authorization</code> header of your requests.</p>
+        <h3>Generating a Token</h3>
         <ol>
             <li>
-                <p><strong>Login</strong>: Users authenticate by sending a POST request to the <code>/login</code> endpoint with their credentials (username and password). If the credentials are valid, a JWT token is generated and returned.</p>
+                <p>Send a POST request to <code>/api/login</code> with your username and password.</p>
+                <pre><code>POST /api/login
+{
+    "username": "your-username",
+    "password": "your-password"
+}</code></pre>
             </li>
             <li>
-                <p><strong>Using the JWT Token</strong>: The JWT token must be included in the <code>Authorization</code> header of subsequent requests to endpoints that require authentication.</p><pre><div class="dark bg-gray-950 rounded-md border-[0.5px] border-token-border-medium"><div class="flex items-center relative text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>makefile</span><div class="flex items-center"><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M7 5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-2v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h2zm2 2h5a3 3 0 0 1 3 3v5h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1zM5 9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1z" clip-rule="evenodd"></path></svg></button></span></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre hljs language-makefile"><span class="hljs-section">Authorization: Bearer &lt;JWT-token&gt;</span>
-</code></div></div></pre></li>
+                <p>If the credentials are correct, you will receive a JWT token in the response.</p>
+                <pre><code>{
+    "token": "your-jwt-token"
+}</code></pre>
+            </li>
             <li>
-                <p><strong>Secure Endpoints</strong>: Endpoints such as <code>POST /books</code> and <code>POST /borrow</code> are secured and require a valid JWT token to access.</p>
+                <p>Include this token in the <code>Authorization</code> header as a Bearer token for subsequent requests.</p>
+                <pre><code>Authorization: Bearer your-jwt-token</code></pre>
             </li>
         </ol>
-        <h2>Password Management</h2>
-        <ul>
+        <h2 id="password-management">Password Management</h2>
+        <p>Password management includes features for user password changes and resets. These features are designed to be secure and user-friendly.</p>
+        <h3>Changing Password</h3>
+        <ol>
             <li>
-                <p><strong>Password Storage</strong>: Passwords are securely hashed using the BCrypt algorithm before storing them in the database. This ensures that even if the database is compromised, the original passwords cannot be easily retrieved.</p>
+                <p>Send a POST request to <code>/api/change-password</code> with your current password and the new password.</p>
+                <pre><code>POST /api/change-password
+{
+    "currentPassword": "your-current-password",
+    "newPassword": "your-new-password"
+}</code></pre>
             </li>
             <li>
-                <p><strong>Password Policies</strong>: The application enforces strong password policies, including minimum length and complexity requirements. Users are encouraged to create passwords that include a combination of letters, numbers, and special
-                    characters.
-                </p>
+                <p>Upon successful validation, your password will be updated.</p>
+            </li>
+        </ol>
+        <h3>Resetting Password</h3>
+        <ol>
+            <li>
+                <p>If you forget your password, send a POST request to <code>/api/reset-password</code> with your email address.</p>
+                <pre><code>POST /api/reset-password
+{
+    "email": "your-email@example.com"
+}</code></pre>
             </li>
             <li>
-                <p><strong>Authentication Flow</strong>: During the login process, the application compares the entered password with the hashed password stored in the database. If the hashes match, authentication is successful, and a JWT token is generated.</p>
+                <p>You will receive a password reset link via email. Follow the instructions to reset your password.</p>
             </li>
-        </ul>
-        <h2>Caching</h2>
-        <ul>
+        </ol>
+        <h2 id="caching">Caching</h2>
+        <p>The system implements caching to improve performance. Cached data is used to reduce redundant computations and database queries.</p>
+        <h3>Cache Configuration</h3>
+        <ol>
             <li>
-                <p><strong>Purpose of Caching</strong>: Caching is used to enhance performance by storing frequently accessed data in memory, reducing the need to repeatedly query the database.</p>
-            </li>
-            <li>
-                <p><strong>Implementation</strong>: In this project, caching is implemented in the <code>LibrarianDetailsService</code> class, specifically for the <code>loadUserByUsername</code> method. After the first successful user lookup, the user details
-                    are cached to reduce database access on subsequent login attempts.</p>
+                <p>Configuration is managed through <code>application.properties</code> or <code>application.yml</code>. You can adjust cache settings as needed.</p>
             </li>
             <li>
-                <p><strong>Cache Management</strong>: The cache is designed to automatically refresh after a certain period or when the cached data becomes stale. This ensures that users always have access to the most up-to-date information.</p>
+                <p>Cacheable methods are annotated with <code>@Cacheable</code>, and cache updates with <code>@CachePut</code> and <code>@CacheEvict</code>.</p>
             </li>
-        </ul>
-        <h2>Aspects</h2>
-        <ul>
-            <li>
-                <p><strong>Purpose of Aspects</strong>: Aspects are used to separate cross-cutting concerns, such as logging and security, from the business logic. This makes the code cleaner and easier to maintain.</p>
-            </li>
-            <li>
-                <p><strong>Implementation</strong>: An aspect is created for the <code>com.Test.Library.Management.System.Controllers</code> package to target POST requests. This aspect can be used to log POST requests, enforce security measures, or perform
-                    other cross-cutting tasks.</p>
-            </li>
-            <li>
-                <p><strong>How It Works</strong>: The aspect intercepts methods annotated with <code>@PostMapping</code> in the specified package. When a POST request is made, the aspect’s advice is executed before or after the controller’s method, depending
-                    on the aspect’s configuration.</p>
-            </li>
-        </ul>
-        <hr>
-        <p>This documentation should provide a clear understanding of how to run the application, interact with the API, and the underlying implementation details related to authentication, password management, caching, and aspects.</p>
+        </ol>
+        <h2 id="aspects">Aspects</h2>
+        <p>Aspects are used to implement cross-cutting concerns such as logging, security, and monitoring.</p>
+        <h3>Logging Aspect</h3>
+        <p>The logging aspect logs details of method calls, including method names, arguments, and execution time.</p>
+        <pre><code>@Aspect
+@Component
+public class LoggingAspect {
+
+    @Around("execution(* com.example.service..*(..))")
+    public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
+        // Log method details
+        return joinPoint.proceed();
+    }
+}</code></pre>
+        <h3>Security Aspect</h3>
+        <p>The security aspect handles access control and security checks before method execution.</p>
+        <pre><code>@Aspect
+@Component
+public class SecurityAspect {
+
+    @Before("execution(* com.example.controller..*(..))")
+    public void checkSecurity(JoinPoint joinPoint) {
+        // Security check logic
+    }
+}</code></pre>
     </div>
 </div>
