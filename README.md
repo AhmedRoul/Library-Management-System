@@ -221,29 +221,20 @@
             </li>
         </ol>
         <h2 id="aspects">Aspects</h2>
-        <p>Aspects are used to implement cross-cutting concerns such as logging, security, and monitoring.</p>
-        <h3>Logging Aspect</h3>
-        <p>The logging aspect logs details of method calls, including method names, arguments, and execution time.</p>
-        <pre><code>@Aspect
-@Component
-public class LoggingAspect {
-
-    @Around("execution(* com.example.service..*(..))")
-    public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
-        // Log method details
-        return joinPoint.proceed();
-    }
-}</code></pre>
-        <h3>Security Aspect</h3>
-        <p>The security aspect handles access control and security checks before method execution.</p>
-        <pre><code>@Aspect
-@Component
-public class SecurityAspect {
-
-    @Before("execution(* com.example.controller..*(..))")
-    public void checkSecurity(JoinPoint joinPoint) {
-        // Security check logic
-    }
-}</code></pre>
+         <ul>
+            <li>
+                <p><strong>Purpose of Aspects</strong>: Aspects are used to separate cross-cutting concerns, such as logging and security, from the business logic. This makes the code cleaner and easier to maintain.</p>
+            </li>
+            <li>
+                <p><strong>Implementation</strong>: An aspect is created for the <code>com.Test.Library.Management.System.Controllers</code> package to target POST requests. This aspect can be used to log POST requests, enforce security measures, or perform
+                    other cross-cutting tasks.</p>
+            </li>
+            <li>
+                <p><strong>How It Works</strong>: The aspect intercepts methods annotated with <code>@PostMapping</code> in the specified package. When a POST request is made, the aspect’s advice is executed before or after the controller’s method, depending
+                    on the aspect’s configuration.</p>
+            </li>
+        </ul>
+        <hr>
+        <p>This documentation should provide a clear understanding of how to run the application, interact with the API, and the underlying implementation details related to authentication, password management, caching, and aspects.</p>
     </div>
 </div>
