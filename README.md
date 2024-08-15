@@ -19,173 +19,53 @@
         
         <h2 id="running-the-application">Running the Application</h2>
         <ol>
-            <li>
-                <p><strong>Clone the Repository</strong>: Begin by cloning the repository to your local machine.</p>
-                <pre><code>git clone https://github.com/AhmedRoul/Library-Management-System/</code></pre>
-            </li>
-            <li>
-                <p><strong>Build the Project</strong>: Navigate to the project directory and build the project using Maven or Gradle.</p>
-                <pre><code>mvn clean install</code></pre>
-            </li>
-            <li>
-                <p><strong>Run the Application</strong>: Use the following command to run the Spring Boot application.</p>
-                <pre><code>mvn spring-boot:run</code></pre>
-            </li>
-            <li>
-                <p><strong>Access the Application</strong>: Once the application is running, you can access it at <code>http://localhost:9100</code>.</p>
-            </li>
+            <li><strong>Clone the Repository</strong>: Begin by cloning the repository to your local machine.</li>
+            <pre><code>git clone https://github.com/AhmedRoul/Library-Management-System/</code></pre>
+            <li><strong>Build the Project</strong>: Navigate to the project directory and build the project using Maven or Gradle.</li>
+            <pre><code>mvn clean install</code></pre>
+            <li><strong>Run the Application</strong>: Use the following command to run the Spring Boot application.</li>
+            <pre><code>mvn spring-boot:run</code></pre>
+            <li><strong>Access the Application</strong>: Once the application is running, you can access it at <code>http://localhost:9100</code>.</li>
         </ol>
 
         <h2 id="interacting-with-api-endpoints">Interacting with API Endpoints</h2>
         <p>The Library Management System provides several API endpoints for managing books, users, and borrowing activities. Below is a summary of the main controllers and their endpoints:</p>
         <ul>
             <li>
-                <p><strong>BookController</strong>: Manages books in the library.</p>
+                <strong>BookController</strong>: Manages books in the library.
                 <ul>
-                    <li>
-                        <p><strong><code>GET /books</code></strong></p>
-                        <ul>
-                            <li><strong>Description</strong>: Retrieve a list of all books in the library.</li>
-                            <li><strong>Response</strong>: A JSON array of book objects, each containing details like title, author, ISBN, and availability.</li>
-                            <li><strong>Authentication</strong>: Not required.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <p><strong><code>GET /books/{id}</code></strong></p>
-                        <ul>
-                            <li><strong>Description</strong>: Retrieve details of a specific book by its ID.</li>
-                            <li><strong>Path Variable</strong>: <code>id</code> - The unique identifier of the book.</li>
-                            <li><strong>Response</strong>: A JSON object containing the book's details.</li>
-                            <li><strong>Authentication</strong>: Not required.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <p><strong><code>POST /books</code></strong></p>
-                        <ul>
-                            <li><strong>Description</strong>: Add a new book to the library.</li>
-                            <li><strong>Request Body</strong>: A JSON object containing the book's title, author, ISBN, and other relevant details.</li>
-                            <li><strong>Response</strong>: A confirmation message or the details of the newly added book.</li>
-                            <li><strong>Authentication</strong>: <strong>Required</strong> (JWT token in <code>Authorization</code> header).</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <p><strong><code>PUT /books/{id}</code></strong></p>
-                        <ul>
-                            <li><strong>Description</strong>: Update the details of an existing book.</li>
-                            <li><strong>Path Variable</strong>: <code>id</code> - The unique identifier of the book.</li>
-                            <li><strong>Request Body</strong>: A JSON object containing the updated details of the book.</li>
-                            <li><strong>Response</strong>: A confirmation message or the updated book details.</li>
-                            <li><strong>Authentication</strong>: <strong>Required</strong> (JWT token in <code>Authorization</code> header).</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <p><strong><code>DELETE /books/{id}</code></strong></p>
-                        <ul>
-                            <li><strong>Description</strong>: Remove a book from the library.</li>
-                            <li><strong>Path Variable</strong>: <code>id</code> - The unique identifier of the book.</li>
-                            <li><strong>Response</strong>: A confirmation message.</li>
-                            <li><strong>Authentication</strong>: <strong>Required</strong> (JWT token in <code>Authorization</code> header).</li>
-                        </ul>
-                    </li>
+                    <li><strong>GET /books</strong>: Retrieve a list of all books in the library. No authentication required.</li>
+                    <li><strong>GET /books/{id}</strong>: Retrieve details of a specific book by its ID. No authentication required.</li>
+                    <li><strong>POST /books</strong>: Add a new book to the library. Authentication required (JWT token in Authorization header).</li>
+                    <li><strong>PUT /books/{id}</strong>: Update the details of an existing book. Authentication required (JWT token in Authorization header).</li>
+                    <li><strong>DELETE /books/{id}</strong>: Remove a book from the library. Authentication required (JWT token in Authorization header).</li>
                 </ul>
             </li>
 
             <li>
                 <h3>Patron Endpoints</h3>
                 <ul>
-                    <li>
-                        <h4>1. Get All Patrons</h4>
-                        <ul>
-                            <li><strong>Endpoint:</strong> <code>GET /api/patrons</code></li>
-                            <li><strong>Description:</strong> Retrieves a list of all patrons.</li>
-                            <li><strong>Response:</strong> A list of patron objects.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h4>2. Get Patron by ID</h4>
-                        <ul>
-                            <li><strong>Endpoint:</strong> <code>GET /api/patrons/{id}</code></li>
-                            <li><strong>Description:</strong> Retrieves a patron by ID.</li>
-                            <li><strong>Path Variable:</strong> <code>id</code> - ID of the patron.</li>
-                            <li><strong>Response:</strong> Patron object if found; otherwise, an empty JSON object.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h4>3. Add a New Patron</h4>
-                        <ul>
-                            <li><strong>Endpoint:</strong> <code>POST /api/patrons</code></li>
-                            <li><strong>Description:</strong> Adds a new patron to the system.</li>
-                            <li><strong>Request Body:</strong> <code>PatronPostRequest</code> object containing new patron details.</li>
-                            <li><strong>Response:</strong> Confirmation message.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h4>4. Edit a Patron</h4>
-                        <ul>
-                            <li><strong>Endpoint:</strong> <code>PUT /api/patrons/{id}</code></li>
-                            <li><strong>Description:</strong> Updates an existing patron's details.</li>
-                            <li><strong>Path Variable:</strong> <code>id</code> - ID of the patron.</li>
-                            <li><strong>Request Body:</strong> <code>PatronPutRequest</code> object containing updated patron details.</li>
-                            <li><strong>Response:</strong> Confirmation message or an error if the patron does not exist.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h4>5. Delete a Patron</h4>
-                        <ul>
-                            <li><strong>Endpoint:</strong> <code>DELETE /api/patrons/{id}</code></li>
-                            <li><strong>Description:</strong> Deletes a patron by ID.</li>
-                            <li><strong>Path Variable:</strong> <code>id</code> - ID of the patron.</li>
-                            <li><strong>Response:</strong> Confirmation message or an error if the patron does not exist.</li>
-                        </ul>
-                    </li>
+                    <li><strong>GET /api/patrons</strong>: Retrieves a list of all patrons.</li>
+                    <li><strong>GET /api/patrons/{id}</strong>: Retrieves a patron by ID.</li>
+                    <li><strong>POST /api/patrons</strong>: Adds a new patron to the system.</li>
+                    <li><strong>PUT /api/patrons/{id}</strong>: Updates an existing patron's details.</li>
+                    <li><strong>DELETE /api/patrons/{id}</strong>: Deletes a patron by ID.</li>
                 </ul>
             </li>
 
             <li>
                 <h3>Borrowing Record Endpoints</h3>
                 <ul>
-                    <li>
-                        <h4>1. Add Borrowing Record</h4>
-                        <ul>
-                            <li><strong>Endpoint:</strong> <code>POST /api/borrow/{bookId}/patron/{patronId}</code></li>
-                            <li><strong>Description:</strong> Creates a new borrowing record for a specific book and patron.</li>
-                            <li><strong>Path Variables:</strong> <code>bookId</code> and <code>patronId</code> - IDs of the book and patron.</li>
-                            <li><strong>Response:</strong> Confirmation message or an error if the book or patron does not exist.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h4>2. Return a Book</h4>
-                        <ul>
-                            <li><strong>Endpoint:</strong> <code>POST /api/return/{bookId}/patron/{patronId}</code></li>
-                            <li><strong>Description:</strong> Returns a borrowed book.</li>
-                            <li><strong>Path Variables:</strong> <code>bookId</code> and <code>patronId</code> - IDs of the book and patron.</li>
-                            <li><strong>Response:</strong> Confirmation message or an error if the record does not exist.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h4>3. Get Borrowing Records for Patron</h4>
-                        <ul>
-                            <li><strong>Endpoint:</strong> <code>GET /api/borrow/{patronId}</code></li>
-                            <li><strong>Description:</strong> Retrieves a list of all books borrowed by a specific patron.</li>
-                            <li><strong>Path Variable:</strong> <code>patronId</code> - ID of the patron.</li>
-                            <li><strong>Response:</strong> List of borrowing records for the specified patron.</li>
-                        </ul>
-                    </li>
+                    <li><strong>POST /api/borrow/{bookId}/patron/{patronId}</strong>: Creates a new borrowing record for a specific book and patron.</li>
+                    <li><strong>POST /api/return/{bookId}/patron/{patronId}</strong>: Returns a borrowed book.</li>
+                    <li><strong>GET /api/borrow/{patronId}</strong>: Retrieves a list of all books borrowed by a specific patron.</li>
                 </ul>
             </li>
 
             <li>
                 <h3>Login Endpoints</h3>
                 <ul>
-                    <li>
-                        <h4>1. Login</h4>
-                        <ul>
-                            <li><strong>Endpoint:</strong> <code>POST /api/login</code></li>
-                            <li><strong>Description:</strong> Authenticates a user and returns a JWT token.</li>
-                            <li><strong>Request Body:</strong> <code>LoginRequest</code> object with <code>username</code> and <code>password</code>.</li>
-                            <li><strong>Response:</strong> JWT token and user details if authentication is successful.</li>
-                        </ul>
-                    </li>
+                    <li><strong>POST /api/login</strong>: Authenticates a user and returns a JWT token.</li>
                 </ul>
             </li>
         </ul>
