@@ -182,32 +182,22 @@
         </ol>
         <h2 id="password-management">Password Management</h2>
         <p>Password management includes features for user password changes and resets. These features are designed to be secure and user-friendly.</p>
-        <h3>Changing Password</h3>
         <ol>
-            <li>
-                <p>Send a POST request to <code>/api/change-password</code> with your current password and the new password.</p>
-                <pre><code>POST /api/change-password
-{
-    "currentPassword": "your-current-password",
-    "newPassword": "your-new-password"
-}</code></pre>
-            </li>
-            <li>
-                <p>Upon successful validation, your password will be updated.</p>
-            </li>
-        </ol>
-        <h3>Resetting Password</h3>
-        <ol>
-            <li>
-                <p>If you forget your password, send a POST request to <code>/api/reset-password</code> with your email address.</p>
-                <pre><code>POST /api/reset-password
-{
-    "email": "your-email@example.com"
-}</code></pre>
-            </li>
-            <li>
-                <p>You will receive a password reset link via email. Follow the instructions to reset your password.</p>
-            </li>
+           <p> <code>CustomPasswordEncoder</code> class focusing on its algorithm and functionality:</p>
+    <hr>
+    <h3>Summary of <code>CustomPasswordEncoder</code></h3>
+    <p>The <code>CustomPasswordEncoder</code> class implements Spring Security's <code>PasswordEncoder</code> interface. It provides custom methods for encoding and verifying passwords.</p>
+    <p><strong>Algorithm</strong>:</p>
+    <ol>
+        <li><strong>Encoding</strong>: Converts a plain text password into an encoded format using a custom algorithm defined in <code>SecurityConfigurationPassword</code>.</li>
+        <li><strong>Matching</strong>: Compares a plain text password against an encoded password to check for a match, also using custom logic from <code>SecurityConfigurationPassword</code>.</li>
+    </ol>
+    <p><strong>How It Works</strong>:</p>
+    <ul>
+        <li><strong>Encoding</strong>: Calls <code>SecurityConfigurationPassword.NewPasswordEncoder()</code> to encode the password.</li>
+        <li><strong>Matching</strong>: Uses <code>SecurityConfigurationPassword.matchPasswords()</code> to verify if the plain text password matches the encoded one.</li>
+    </ul>
+    <hr>
         </ol>
         <h2 id="caching">Caching</h2>
         <p>The system implements caching to improve performance. Cached data is used to reduce redundant computations and database queries.</p>
