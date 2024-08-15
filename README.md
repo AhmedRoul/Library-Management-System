@@ -201,9 +201,7 @@
         <p>Include this token in the <code>Authorization</code> header as a Bearer token for subsequent requests.</p>
         <pre><code>Authorization: Bearer your-jwt-token</code></pre>
     </li>
-</ol>
-
-<h3>Signing Up</h3>
+    <h3>Signing Up</h3>
 <p>Before generating a token, you need to sign up. Send a POST request to <code>/api/register</code> with your registration details.</p>
 <pre><code>POST /api/register
 {
@@ -211,6 +209,10 @@
     "password": "your-password"
 }</code></pre>
 <p>If the registration is successful, you'll be able to log in and generate a JWT token.</p>
+
+</ol>
+
+
 
         <h2 id="password-management">Password Management</h2>
         <p>Password management includes features for user password changes and resets. These features are designed to be secure and user-friendly.</p>
