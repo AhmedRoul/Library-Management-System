@@ -206,9 +206,11 @@
 <pre><code>POST /api/register
 {
     "email": "your-email@example.com",
-    "password": "your-password"
+    "password": "your-password",
+    "firstname":"your firstname",
+    "lastname":"your lastname"
 }</code></pre>
-<p>If the registration is successful, you'll be able to log in and generate a JWT token.</p>
+<p><h2>If the registration is successful, you'll be able to log in and generate a JWT token.</h2></p>
 </ol>
 
 
