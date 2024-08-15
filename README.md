@@ -180,6 +180,38 @@
                 <pre><code>Authorization: Bearer your-jwt-token</code></pre>
             </li>
         </ol>
+        <p>The system uses JWT (JSON Web Token) for user authentication. To access secured endpoints, you need to include a valid JWT token in the <code>Authorization</code> header of your requests.</p>
+<h3>Generating a Token</h3>
+<ol>
+    <li>
+        <p>Send a POST request to <code>/api/login</code> with your username and password.</p>
+        <pre><code>POST /api/login
+{
+    "username": "your-username",
+    "password": "your-password"
+}</code></pre>
+    </li>
+    <li>
+        <p>If the credentials are correct, you will receive a JWT token in the response.</p>
+        <pre><code>{
+    "token": "your-jwt-token"
+}</code></pre>
+    </li>
+    <li>
+        <p>Include this token in the <code>Authorization</code> header as a Bearer token for subsequent requests.</p>
+        <pre><code>Authorization: Bearer your-jwt-token</code></pre>
+    </li>
+</ol>
+
+<h3>Signing Up</h3>
+<p>Before generating a token, you need to sign up. Send a POST request to <code>/api/register</code> with your registration details.</p>
+<pre><code>POST /api/register
+{
+    "email": "your-email@example.com",
+    "password": "your-password"
+}</code></pre>
+<p>If the registration is successful, you'll be able to log in and generate a JWT token.</p>
+
         <h2 id="password-management">Password Management</h2>
         <p>Password management includes features for user password changes and resets. These features are designed to be secure and user-friendly.</p>
         <ol>
