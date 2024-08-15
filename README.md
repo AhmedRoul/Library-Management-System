@@ -1,17 +1,60 @@
-<div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]">
-    <div class="markdown prose w-full break-words dark:prose-invert dark">
-        <p>Certainly! Here's a compiled document that includes all the sections discussed:</p>
-        <hr>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        h2 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+        ol, ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        a {
+            color: #1a0dab;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
         <h1>Library Management System Documentation</h1>
         <h2>Table of Contents</h2>
         <ol>
-            <li><a rel="noopener" href="#introduction">Introduction</a></li>
-            <li><a rel="noopener" href="#running-the-application">Running the Application</a></li>
-            <li><a rel="noopener" href="#interacting-with-api-endpoints">Interacting with API Endpoints</a></li>
-            <li><a rel="noopener" href="#authentication">Authentication</a></li>
-            <li><a rel="noopener" href="#password-management">Password Management</a></li>
-            <li><a rel="noopener" href="#caching">Caching</a></li>
-            <li><a rel="noopener" href="#aspects">Aspects</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#running-the-application">Running the Application</a></li>
+            <li><a href="#interacting-with-api-endpoints">Interacting with API Endpoints</a></li>
+            <li><a href="#authentication">Authentication</a></li>
+            <li><a href="#password-management">Password Management</a></li>
+            <li><a href="#caching">Caching</a></li>
+            <li><a href="#aspects">Aspects</a></li>
         </ol>
         <hr>
         <h2 id="introduction">Introduction</h2>
@@ -30,44 +73,35 @@
 
         <h2 id="interacting-with-api-endpoints">Interacting with API Endpoints</h2>
         <p>The Library Management System provides several API endpoints for managing books, users, and borrowing activities. Below is a summary of the main controllers and their endpoints:</p>
+        
+        <h3>BookController</h3>
         <ul>
-            <li>
-                <strong>BookController</strong>: Manages books in the library.
-                <ul>
-                    <li><strong>GET /books</strong>: Retrieve a list of all books in the library. No authentication required.</li>
-                    <li><strong>GET /books/{id}</strong>: Retrieve details of a specific book by its ID. No authentication required.</li>
-                    <li><strong>POST /books</strong>: Add a new book to the library. Authentication required (JWT token in Authorization header).</li>
-                    <li><strong>PUT /books/{id}</strong>: Update the details of an existing book. Authentication required (JWT token in Authorization header).</li>
-                    <li><strong>DELETE /books/{id}</strong>: Remove a book from the library. Authentication required (JWT token in Authorization header).</li>
-                </ul>
-            </li>
+            <li><strong>GET /books</strong>: Retrieve a list of all books in the library. No authentication required.</li>
+            <li><strong>GET /books/{id}</strong>: Retrieve details of a specific book by its ID. No authentication required.</li>
+            <li><strong>POST /books</strong>: Add a new book to the library. Authentication required (JWT token in Authorization header).</li>
+            <li><strong>PUT /books/{id}</strong>: Update the details of an existing book. Authentication required (JWT token in Authorization header).</li>
+            <li><strong>DELETE /books/{id}</strong>: Remove a book from the library. Authentication required (JWT token in Authorization header).</li>
+        </ul>
 
-            <li>
-                <h3>Patron Endpoints</h3>
-                <ul>
-                    <li><strong>GET /api/patrons</strong>: Retrieves a list of all patrons.</li>
-                    <li><strong>GET /api/patrons/{id}</strong>: Retrieves a patron by ID.</li>
-                    <li><strong>POST /api/patrons</strong>: Adds a new patron to the system.</li>
-                    <li><strong>PUT /api/patrons/{id}</strong>: Updates an existing patron's details.</li>
-                    <li><strong>DELETE /api/patrons/{id}</strong>: Deletes a patron by ID.</li>
-                </ul>
-            </li>
+        <h3>Patron Endpoints</h3>
+        <ul>
+            <li><strong>GET /api/patrons</strong>: Retrieve a list of all patrons.</li>
+            <li><strong>GET /api/patrons/{id}</strong>: Retrieve a patron by ID.</li>
+            <li><strong>POST /api/patrons</strong>: Add a new patron to the system.</li>
+            <li><strong>PUT /api/patrons/{id}</strong>: Update an existing patron's details.</li>
+            <li><strong>DELETE /api/patrons/{id}</strong>: Delete a patron by ID.</li>
+        </ul>
 
-            <li>
-                <h3>Borrowing Record Endpoints</h3>
-                <ul>
-                    <li><strong>POST /api/borrow/{bookId}/patron/{patronId}</strong>: Creates a new borrowing record for a specific book and patron.</li>
-                    <li><strong>POST /api/return/{bookId}/patron/{patronId}</strong>: Returns a borrowed book.</li>
-                    <li><strong>GET /api/borrow/{patronId}</strong>: Retrieves a list of all books borrowed by a specific patron.</li>
-                </ul>
-            </li>
+        <h3>Borrowing Record Endpoints</h3>
+        <ul>
+            <li><strong>POST /api/borrow/{bookId}/patron/{patronId}</strong>: Create a new borrowing record for a specific book and patron.</li>
+            <li><strong>POST /api/return/{bookId}/patron/{patronId}</strong>: Return a borrowed book.</li>
+            <li><strong>GET /api/borrow/{patronId}</strong>: Retrieve a list of all books borrowed by a specific patron.</li>
+        </ul>
 
-            <li>
-                <h3>Login Endpoints</h3>
-                <ul>
-                    <li><strong>POST /api/login</strong>: Authenticates a user and returns a JWT token.</li>
-                </ul>
-            </li>
+        <h3>Login Endpoints</h3>
+        <ul>
+            <li><strong>POST /api/login</strong>: Authenticate a user and return a JWT token.</li>
         </ul>
 
         <h2 id="authentication">Authentication</h2>
@@ -85,4 +119,5 @@
         <hr>
         <p>Feel free to review the above sections and let me know if there are any changes or additional details you would like to include!</p>
     </div>
-</div>
+</body>
+</html>
