@@ -45,7 +45,7 @@
                         <ul>
                             <li><strong>Description</strong>: Retrieve a list of all books in the library.</li>
                             <li><strong>Response</strong>: A JSON array of book objects, each containing details like title, author, ISBN, and availability.</li>
-                            <li><strong>Authentication</strong>: Required (JWT token in Authorization header).</li>
+                            <li><strong>Authentication</strong>: Not required.</li>
                         </ul>
                     </li>
                     <li>
@@ -54,7 +54,7 @@
                             <li><strong>Description</strong>: Retrieve details of a specific book by its ID.</li>
                             <li><strong>Path Variable</strong>: <code>id</code> - The unique identifier of the book.</li>
                             <li><strong>Response</strong>: A JSON object containing the book's details.</li>
-                            <li><strong>Authentication</strong>: Required (JWT token in Authorization header).</li>
+                            <li><strong>Authentication</strong>: Not required.</li>
                         </ul>
                     </li>
                     <li>
@@ -93,7 +93,6 @@
                 <li><strong>Endpoint:</strong> <code>GET /api/patrons</code></li>
                 <li><strong>Description:</strong> Retrieves a list of all patrons.</li>
                 <li><strong>Response:</strong> A list of patron objects.</li>
-                 <li><strong>Authentication</strong>: <strong>Required</strong> (JWT token in <code>Authorization</code> header).</li>
             </ul>
             <h4>2. Get Patron by ID</h4>
             <ul>
@@ -101,7 +100,6 @@
                 <li><strong>Description:</strong> Retrieves a patron by ID.</li>
                 <li><strong>Path Variable:</strong> <code>id</code> - ID of the patron.</li>
                 <li><strong>Response:</strong> Patron object if found; otherwise, an empty JSON object.</li>
-                 <li><strong>Authentication</strong>: <strong>Required</strong> (JWT token in <code>Authorization</code> header).</li>
             </ul>
             <h4>3. Add a New Patron</h4>
             <ul>
@@ -109,7 +107,6 @@
                 <li><strong>Description:</strong> Adds a new patron to the system.</li>
                 <li><strong>Request Body:</strong> <code>PatronPostRequest</code> object containing new patron details.</li>
                 <li><strong>Response:</strong> Confirmation message.</li>
-                 <li><strong>Authentication</strong>: <strong>Required</strong> (JWT token in <code>Authorization</code> header).</li>
             </ul>
             <h4>4. Edit a Patron</h4>
             <ul>
@@ -118,7 +115,6 @@
                 <li><strong>Path Variable:</strong> <code>id</code> - ID of the patron.</li>
                 <li><strong>Request Body:</strong> <code>PatronPutRequest</code> object containing updated patron details.</li>
                 <li><strong>Response:</strong> Confirmation message or an error if the patron does not exist.</li>
-                 <li><strong>Authentication</strong>: <strong>Required</strong> (JWT token in <code>Authorization</code> header).</li>
             </ul>
             <h4>5. Delete a Patron</h4>
             <ul>
@@ -126,7 +122,6 @@
                 <li><strong>Description:</strong> Deletes a patron by ID.</li>
                 <li><strong>Path Variable:</strong> <code>id</code> - ID of the patron.</li>
                 <li><strong>Response:</strong> Confirmation message or an error if the patron does not exist.</li>
-                 <li><strong>Authentication</strong>: <strong>Required</strong> (JWT token in <code>Authorization</code> header).</li>
             </ul>
             <h3>Borrowing Record Endpoints</h3>
             <h4>1. Add Borrowing Record</h4>
@@ -140,7 +135,6 @@
                     </ul>
                 </li>
                 <li><strong>Response:</strong> Confirmation message or an error if the record cannot be created.</li>
-                 <li><strong>Authentication</strong>: <strong>Required</strong> (JWT token in <code>Authorization</code> header).</li>
             </ul>
             <h4>2. Get All Borrowing Records</h4>
             <ul>
@@ -154,7 +148,6 @@
                 <li><strong>Description:</strong> Retrieves a borrowing record by ID.</li>
                 <li><strong>Path Variable:</strong> <code>id</code> - ID of the borrowing record.</li>
                 <li><strong>Response:</strong> Borrowing record object if found; otherwise, an empty JSON object.</li>
-                 <li><strong>Authentication</strong>: <strong>Required</strong> (JWT token in <code>Authorization</code> header).</li>
             </ul>
             <h4>4. Return Borrowed Book</h4>
             <ul>
@@ -162,7 +155,6 @@
                 <li><strong>Description:</strong> Marks a borrowed book as returned.</li>
                 <li><strong>Path Variable:</strong> <code>id</code> - ID of the borrowing record.</li>
                 <li><strong>Response:</strong> Confirmation message or an error if the record cannot be updated.</li>
-                 <li><strong>Authentication</strong>: <strong>Required</strong> (JWT token in <code>Authorization</code> header).</li>
             </ul>
         </ul>
         <h2 id="authentication">Authentication</h2>
@@ -173,14 +165,14 @@
                 <p>Send a POST request to <code>/api/login</code> with your username and password.</p>
                 <pre><code>POST /api/login
 {
-    "email": "your-username",
+    "username": "your-username",
     "password": "your-password"
 }</code></pre>
             </li>
             <li>
                 <p>If the credentials are correct, you will receive a JWT token in the response.</p>
                 <pre><code>{
-    "accessToken": "your-jwt-token"
+    "token": "your-jwt-token"
 }</code></pre>
             </li>
             <li>
@@ -190,46 +182,68 @@
         </ol>
         <h2 id="password-management">Password Management</h2>
         <p>Password management includes features for user password changes and resets. These features are designed to be secure and user-friendly.</p>
-
-        <div class="markdown prose w-full break-words dark:prose-invert dark">
-    <p> <code>CustomPasswordEncoder</code> class focusing on its algorithm and functionality:</p>
-    <hr>
-    <h3>Summary of <code>CustomPasswordEncoder</code></h3>
-    <p>The <code>CustomPasswordEncoder</code> class implements Spring Security's <code>PasswordEncoder</code> interface. It provides custom methods for encoding and verifying passwords.</p>
-    <p><strong>Algorithm</strong>:</p>
-    <ol>
-        <li><strong>Encoding</strong>: Converts a plain text password into an encoded format using a custom algorithm defined in <code>SecurityConfigurationPassword</code>.</li>
-        <li><strong>Matching</strong>: Compares a plain text password against an encoded password to check for a match, also using custom logic from <code>SecurityConfigurationPassword</code>.</li>
-    </ol>
-    <p><strong>How It Works</strong>:</p>
-    <ul>
-        <li><strong>Encoding</strong>: Calls <code>SecurityConfigurationPassword.NewPasswordEncoder()</code> to encode the password.</li>
-        <li><strong>Matching</strong>: Uses <code>SecurityConfigurationPassword.matchPasswords()</code> to verify if the plain text password matches the encoded one.</li>
-    </ul>
-    <hr>
-    </div>
-    <br>
+        <h3>Changing Password</h3>
+        <ol>
+            <li>
+                <p>Send a POST request to <code>/api/change-password</code> with your current password and the new password.</p>
+                <pre><code>POST /api/change-password
+{
+    "currentPassword": "your-current-password",
+    "newPassword": "your-new-password"
+}</code></pre>
+            </li>
+            <li>
+                <p>Upon successful validation, your password will be updated.</p>
+            </li>
+        </ol>
+        <h3>Resetting Password</h3>
+        <ol>
+            <li>
+                <p>If you forget your password, send a POST request to <code>/api/reset-password</code> with your email address.</p>
+                <pre><code>POST /api/reset-password
+{
+    "email": "your-email@example.com"
+}</code></pre>
+            </li>
+            <li>
+                <p>You will receive a password reset link via email. Follow the instructions to reset your password.</p>
+            </li>
+        </ol>
         <h2 id="caching">Caching</h2>
         <p>The system implements caching to improve performance. Cached data is used to reduce redundant computations and database queries.</p>
         <h3>Cache Configuration</h3>
         <ol>
             <li>
+                <p>Configuration is managed through <code>application.properties</code> or <code>application.yml</code>. You can adjust cache settings as needed.</p>
+            </li>
+            <li>
                 <p>Cacheable methods are annotated with <code>@Cacheable</code>, and cache updates with <code>@CachePut</code> and <code>@CacheEvict</code>.</p>
             </li>
         </ol>
         <h2 id="aspects">Aspects</h2>
-         <ul>
-            <li>
-                <p><strong>Purpose of Aspects</strong>: Aspects are used to separate cross-cutting concerns, such as logging and security, from the business logic. This makes the code cleaner and easier to maintain.</p>
-            </li>
-            <li>
-             
-            </li>
-            <li>
-               
-            </li>
-        </ul>
-        <hr>
-        <p>This documentation should provide a clear understanding of how to run the application, interact with the API, and the underlying implementation details related to authentication, password management, caching, and aspects.</p>
+        <p>Aspects are used to implement cross-cutting concerns such as logging, security, and monitoring.</p>
+        <h3>Logging Aspect</h3>
+        <p>The logging aspect logs details of method calls, including method names, arguments, and execution time.</p>
+        <pre><code>@Aspect
+@Component
+public class LoggingAspect {
+
+    @Around("execution(* com.example.service..*(..))")
+    public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
+        // Log method details
+        return joinPoint.proceed();
+    }
+}</code></pre>
+        <h3>Security Aspect</h3>
+        <p>The security aspect handles access control and security checks before method execution.</p>
+        <pre><code>@Aspect
+@Component
+public class SecurityAspect {
+
+    @Before("execution(* com.example.controller..*(..))")
+    public void checkSecurity(JoinPoint joinPoint) {
+        // Security check logic
+    }
+}</code></pre>
     </div>
 </div>
