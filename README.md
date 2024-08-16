@@ -1,8 +1,8 @@
 <div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]">
     <div class="markdown prose w-full break-words dark:prose-invert dark">
-        <p>Certainly! Here's a compiled document that includes all the sections discussed:</p>
-        <hr>
-        <h1>Library Management System Documentation</h1>
+       
+
+<h1>Library Management System Documentation</h1>
         <h2>Table of Contents</h2>
         <ol>
             <li><a rel="noopener" href="#introduction">Introduction</a></li>
